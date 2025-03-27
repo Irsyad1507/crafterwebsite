@@ -1,7 +1,6 @@
 from flask import render_template, flash, request, redirect, url_for
 from app import app, db
 from app.models import Feedbacks
-from werkzeug.security import generate_password_hash, check_password_hash
 from app.webforms import FeedbackForm
 
 
@@ -20,3 +19,7 @@ def feedback():
         db.session.commit()
         flash("Feedback submitted successfully!")
         return redirect(url_for('index'))
+    
+@app.route('/changelog')
+def changelog():
+    return render_template("changelog.html")
